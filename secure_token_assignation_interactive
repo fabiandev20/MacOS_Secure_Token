@@ -1,0 +1,15 @@
+#!/usr/bin/expect
+
+spawn sysadminctl -adminUser interactive -secureTokenOn <local_account_receiver> -password -
+
+# It waits 10 seconds meamwhile the End-User input the sudo password and then continues.
+
+interact timeout 10 return
+expect -exact "Enter password for :"
+# Send the password, and then wait for a password prompt.
+send -- "<local_password_receiver>\r"
+
+expect eof
+
+# This Script ables you to assign a Secure Token to admin local account using the End-User credentials 
+# You can use this script and deploy throught the MDM provider or create the script as application.
