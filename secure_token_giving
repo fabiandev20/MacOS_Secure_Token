@@ -1,0 +1,22 @@
+#!/bin/bash
+
+SECURE_TOKEN_USER="<secure_token_holder>"
+SECURE_TOKEN_USER_PASS="<password>"
+NEW_SECURE_TOKEN_USER="<secure_token_receiver>"
+NEW_SECURE_TOKEN_USER_PASS="<password>"
+
+# Give a secure token using the user account secure token holder
+
+/usr/sbin/sysadminctl -adminUser "$SECURE_TOKEN_USER" -adminPassword  -secureTokenOn "$NEW_SECURE_TOKEN_USER" -password "$NEW_SECURE_TOKEN_USER_PASS"
+exitresult=$(/bin/echo $?)
+
+if [ "$exitresult" = 0 ]; then
+    /bin/echo "Successfully added Secure Token to ${NEW_SECURE_TOKEN_USER}!"
+   
+    exitcode=0
+else
+    /bin/echo "Failed to add Secure Token to ${NEW_SECURE_TOKEN_USER}."
+    exitcode=1
+fi
+
+exit $exitcode
