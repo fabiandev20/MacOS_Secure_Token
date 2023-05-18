@@ -1,0 +1,15 @@
+#!/usr/bin/expect
+
+spawn sudo profiles install -type bootstraptoken
+expect -exact "Password: "
+# Send the password, and then wait for a password prompt.
+send -- "<Pass>\r"
+expect -exact "Enter the admin user name: "
+
+# Send the local account targeted, and then wait for a shell prompt.
+send -- "<User>\r"
+expect -exact "Enter the password for user 'User': "
+
+# Send the local password account , and then wait for a shell prompt.
+send -- "<Pass>\r"
+expect eof
