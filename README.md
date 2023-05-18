@@ -1,6 +1,6 @@
-# MacOS_securetoken_asignation
+# MacOS_Secure Token
 
-Secure Token implementation.
+
 A secure token on a Mac is an account attribute that permits users to perform critical operations on the macOS system,involving processes such as enabling FileVault, approving system and kernel extensions, and enforcing software updates.
 
 Documentation:
