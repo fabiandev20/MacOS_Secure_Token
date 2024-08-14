@@ -1,0 +1,21 @@
+#!/bin/bash
+
+SECURE_TOKEN_USER="wizehireadmin"
+SECURE_TOKEN_USER_PASS="%0vA!F"
+NEW_SECURE_TOKEN_USER="itadmin"
+NEW_SECURE_TOKEN_USER_PASS="G$8Kz"
+
+# Check the Secure Token Status  
+/usr/sbin/sysadminctl -adminUser "$SECURE_TOKEN_USER" -adminPassword "$SECURE_TOKEN_USER_PASS" -secureTokenStatus "$NEW_SECURE_TOKEN_USER" 
+exitresult=$(/bin/echo $?)
+
+if [ "$exitresult" = 0 ]; then
+    /bin/echo "Secure token is ENABLED for user ${NEW_SECURE_TOKEN_USER}!"
+   
+    exitcode=0
+else
+    /bin/echo "Secure token is ENABLED for user ${NEW_SECURE_TOKEN_USER}."
+    exitcode=1
+fi
+
+exit $exitcode
